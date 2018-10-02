@@ -14,7 +14,7 @@
 %>
 <%
  for(int i=0;i<items.size();i++) { //현재 리스트의 크기만큼 반복실행
-  item = items.get(i); //리스트의 처음 값부터 순차적으로 itme에 삽입
+  item = items.get(i); //리스트의 처음 값부터 순차적으로 item에 삽입
 %>
   <%=item.getNo()%> <!-- item에서 no값을 불러드림 -->
   <%=item.getName()%><BR> <!-- item에서 name값을 불러드림 -->
