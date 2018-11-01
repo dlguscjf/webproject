@@ -6,8 +6,8 @@
 	</head>
 	<body>
 		<c:forEach var="item" items="${items}">
-			${item.email}
-			${item.password}<br>
+			${item.no}
+			${item.name}<br>
 		</c:forEach>
 	</body>
 </html>
