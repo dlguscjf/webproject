@@ -7,19 +7,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import kr.ac.dit.domain.LogonDTO;
 import kr.ac.dit.domain.MemberVO;
 import kr.ac.dit.service.MemberService;
-
 @Controller
-
 @RequestMapping("/member")
 
 public class MemberController {
 
  @Autowired
-
  MemberService memberService;
  @RequestMapping(value = "/create", method = RequestMethod.GET)
  public void createGET() throws Exception {
