@@ -22,9 +22,13 @@ public void postHandle(HttpServletRequest httpServletRequest, HttpServletRespons
 	HttpSession httpSession = httpServletRequest.getSession();
 	ModelMap modelMap = modelAndView.getModelMap();
 	Object memberVO = modelMap.get("memberVO");
-	if (memberVO != null) {
-		httpSession.setAttribute("login", memberVO);
-		httpServletResponse.sendRedirect("/");
-		}
+		if (memberVO != null) {
+			httpSession.setAttribute("login", memberVO);
+			Object saveDirect = httpSession.getAttribute("saveDirect");
+			System.out.println(saveDirect != null ? saveDirect : "Null");
+			httpServletResponse.sendRedirect(saveDirect != null ? (String)saveDirect:"/");
+		}//로그인을 했으면 저장된 URL로 이동할수 있도록 설정
 	}
 }
+
+ 

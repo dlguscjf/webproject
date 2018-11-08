@@ -8,13 +8,25 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 @Override
 public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
 Object handler) throws Exception {
-HttpSession httpSession = httpServletRequest.getSession();
-	if(httpSession.getAttribute("login")==null) {
-		httpServletResponse.sendRedirect("/member/login");
-		return false;
+	HttpSession httpSession = httpServletRequest.getSession();
+		if(httpSession.getAttribute("login")==null) {
+			String uri = httpServletRequest.getRequestURI();
+			String query = httpServletRequest.getQueryString();
+				if (query == null || query.equals("null")) {
+					query = "";
+				} else {
+					uri += "?" + query;
+				}
+				if (httpServletRequest.getMethod().equals("GET")) {
+					httpSession.setAttribute("saveDirect", uri + query);
+				} else {
+					httpSession.setAttribute("saveDirect", uri);
+				}
+				httpServletResponse.sendRedirect("/member/login");
+				return false;
+		}
+		return true;
 	}
-	return true;
-}
 }
 
  
